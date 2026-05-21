@@ -27,6 +27,7 @@ Code is read far more often than it is written. Flag anything that makes the rea
 - **Control flow.** Early returns that would simplify nesting and aren't used. Inverted conditions that read as double negatives. Cleverness where straightforward code would do.
 - **Comments.** Comments that restate the code (`// increment i`), comments that have drifted out of sync with the code, missing comments where the *why* is genuinely non-obvious. Good code needs comments for intent and tradeoffs, not mechanics.
 - **Consistency.** New code that ignores conventions visible elsewhere in the diff or file — naming style, error handling pattern, import order, formatting.
+- **Project structure.** New files placed in the wrong directory, package, layer, or ownership boundary. Treat file placement as part of the code's design, not as cosmetic organization. A misplaced file makes the code harder to find, easier to misuse, and more likely to grow dependencies in the wrong direction. If the codebase has a clear existing home for the new file, flag the current location and tell the author to move it there.
 - **Cognitive load.** Anything that forces the reader to hold a lot in their head at once: implicit state, action at a distance, magic numbers, unexplained constants.
 
 ### Overengineering
@@ -88,6 +89,7 @@ Rules for findings:
 - One issue per bullet. If the same issue appears in five places, list it once with the locations.
 - Be specific. Point at the line, name the variable, quote the phrase. "Naming is unclear" is useless; "`process()` on line 42 actually validates and saves — split or rename to `validateAndSave()`" is useful.
 - Suggest the fix when it's short. Don't write replacement code longer than the original.
+- Do not downgrade structural placement problems into optional cleanup. Use `Must fix` when the location violates package boundaries, build/distribution rules, import direction, or ownership conventions. Use `Should fix` when the code works but belongs in an existing, more specific folder. Use `Consider` only when the current location is valid and the alternative is a minor organization preference.
 - If the diff is clean, say so in one line and stop. Do not invent problems.
 
 ## Tone
