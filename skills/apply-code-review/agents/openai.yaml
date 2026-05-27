@@ -1,0 +1,8 @@
+interface:
+  display_name: "Apply Code Review"
+  short_description: "Implement the findings from a code review"
+  default_prompt: "Use $apply-code-review to review the user provided code review report"
+
+policy:
+  allow_implicit_invocation: true
+
