@@ -1,60 +1,44 @@
-# Agent Skills
+# Skills
 
-Private repository for installable agent skills.
+A collection of agent skills for personal use.
 
 ## Available Skills
 
 | Skill | Purpose | Use When |
 | --- | --- | --- |
-| `code-review` | Reviews code changes for readability problems and overengineering. | You want prioritized findings for a diff, snippet, branch comparison, staged changes, or patch. |
-| `apply-code-review` | Implements review findings or explains why a finding was declined or deferred. | You already have a code review report and want the findings handled. |
+| `code-review` | Reviews code changes for readability problems and overengineering. | You want a concise review of code changes with prioritized findings. |
+| `apply-code-review` | Implements review findings or explains why a finding was declined or deferred. | You want review feedback applied consistently. |
 
-## Install
+## Installation
 
-Use the repository URL form that already works with your normal git setup.
+Use Vercel Labs `skills` with whichever repository URL works with your normal git setup.
 
-With Vercel Labs `skills`:
+```bash
+npx skills add git@github.com:asaliev/skills.git
+```
+
+That command prompts you to select which skills to install from this repository.
+
+If you already know the exact skill you want, pass it explicitly:
 
 ```bash
 npx skills add git@github.com:asaliev/skills.git --skill <skill-name>
-npx skills add https://github.com/asaliev/skills --skill <skill-name>
 ```
 
-With `agent-skills-cli`:
+You can also use the HTTPS URL:
 
 ```bash
-skills install git@github.com:asaliev/skills.git -s <skill-name>
-skills install https://github.com/asaliev/skills -s <skill-name>
+npx skills add https://github.com/asaliev/skills
 ```
 
-Examples:
+For private repositories, use SSH keys, git credential helpers, `.netrc`, or token environment variables supported by your git setup.
 
-```bash
-npx skills add git@github.com:asaliev/skills.git --skill code-review
-skills install https://github.com/asaliev/skills -s apply-code-review
-```
+## Contributing
 
-For a private GitHub repository, use the SSH keys, git credential helpers, `.netrc`, or token environment variables supported by your installer.
+Add new skills under `skills/<skill-name>/` with a `SKILL.md` file that includes `name` and `description` frontmatter.
 
-## List Available Skills
+Keep skills focused on one workflow, and include agent-specific metadata under `agents/` only when a skill needs it.
 
-```bash
-npx skills add git@github.com:asaliev/skills.git --list
-skills list -p .
-```
+## License
 
-## Repository Layout
-
-Each skill lives in `skills/<skill-name>/` and includes a `SKILL.md` file. Skills can also include agent-specific metadata under `agents/`.
-
-```text
-skills/
-  apply-code-review/
-    SKILL.md
-    agents/
-      openai.yaml
-  code-review/
-    SKILL.md
-    agents/
-      openai.yaml
-```
+See [LICENSE](LICENSE) for the MIT terms.
