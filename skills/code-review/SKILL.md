@@ -52,6 +52,7 @@ To stay useful, ignore:
 
 - Style nits a formatter or linter would catch
 - Personal preference where the existing code is already reasonable
+- Wording precision in a comment, docstring, or test name, when the sentence is broadly right and the reader is not misled. Prose can always be made more exact, so hunting exactness is an unbounded search that burns review passes without changing behavior. Flag drifted prose only where it would actively mislead someone into a wrong change — and when a comment is inaccurate, prefer telling the author to delete it over telling them how to reword it. Never spread one over-documented file's wording problems across several passes; if the prose is too voluminous to be maintained accurately, say that once as a single finding.
 - Performance unless something is clearly O(n²) where O(n) is trivial, or there is an obvious unbounded resource use
 - Security, correctness, or architecture unless it directly produces unreadable or overbuilt code
 - Praise. No "great job," no summary of what the code does well. The user already knows what they wrote.

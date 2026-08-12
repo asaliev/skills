@@ -22,6 +22,17 @@ For each finding in the review — regardless of severity — produce one of:
 3. **Deferred with reason.** Change is correct but belongs in a separate
    commit. State why and where you tracked it.
 
+## Findings about prose
+
+When the finding is about a comment, docstring, or test name that no longer
+matches the code, choose between the three outcomes above by this rule:
+**delete rather than reword** whenever the sentence is not load-bearing.
+Rewritten prose is new review surface, so a reword invites the next reviewer
+to refine it again, while a deletion closes the finding permanently. Deleting
+is **Applied**. Keeping a sentence whose remaining imprecision is harmless is
+**Declined**, and "the prose this finding corrects should be removed or left
+alone, not made more exact" is a complete reason for it.
+
 ## Severity meaning for the implementer
 
 - **Must fix** — apply unless you can articulate why the reviewer is wrong.
