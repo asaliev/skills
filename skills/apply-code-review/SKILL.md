@@ -10,14 +10,18 @@ description: Implement the findings from a code review. Use when given a
 
 # Applying a Code Review
 
+A finding states a problem and what "resolved" looks like, not a patch. You
+own the implementation: make the smallest change that resolves it, and say
+what you did.
+
 For each finding in the review — regardless of severity — produce one of:
 
 1. **Applied.** Made the change. Note the file and line.
 2. **Declined with reason.** Evaluated and chose not to apply. State the
    specific reason. "Marked Consider" is not a reason. "Refactor not
    requested" is not a reason — the review IS the request. Valid reasons
-   include: conflicts with in-flight work the reviewer couldn't see, the
-   suggested fix would break a contract elsewhere in the codebase, you
+   include: conflicts with in-flight work the reviewer couldn't see,
+   resolving it would break a contract elsewhere in the codebase, you
    disagree with the reviewer's reasoning (say what you disagree with).
 3. **Deferred with reason.** Change is correct but belongs in a separate
    commit. State why and where you tracked it.
@@ -38,8 +42,9 @@ alone, not made more exact" is a complete reason for it.
 - **Must fix** — apply unless you can articulate why the reviewer is wrong.
 - **Should fix** — apply unless it conflicts with something the reviewer
   couldn't see.
-- **Consider** — judgment call. Evaluate the actual code, the actual fix,
-  and decide. If the fix is small and the reasoning sound, apply it.
+- **Consider** — judgment call. Evaluate the actual code and the change it
+  would take, and decide. If that change is small and the reasoning sound,
+  apply it.
 
 ## Output format
 

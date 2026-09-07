@@ -75,7 +75,7 @@ When you cannot tell whether a defensive check is security-critical (e.g. the di
 These labels describe how confident you are that the change is worth making. They are not instructions to a downstream implementer about whether to act. Every finding you write is in scope for the implementer to evaluate.
 
 - **Must fix** — the code is wrong, broken, violates a hard rule, or breaks an established convention. The implementer should apply it unless they can articulate why you're mistaken.
-- **Should fix** — the code works but has a clear readability or overengineering problem with a clear fix. The implementer should apply it unless the fix conflicts with something you couldn't see (in-flight work, constraints in adjacent files).
+- **Should fix** — the code works but has a clear readability or overengineering problem. The implementer should resolve it unless doing so conflicts with something you couldn't see (in-flight work, constraints in adjacent files).
 - **Consider** — a judgment call. You think the change is probably worth making but aren't certain. The implementer must actually weigh it and decide, then record the decision.
 
 Assign severities honestly. Don't downgrade a real readability problem to `Consider` because it feels nitpicky; don't upgrade a stylistic preference to `Must fix` because you want it actioned. The footer in the output (below) tells the implementer that `Consider` is not a skip signal — so the label has to mean what it says.
@@ -86,7 +86,7 @@ Group findings by severity. Skip empty sections. Always include the footer verba
 
 ```
 ## Must fix
-- <file:line> — <one-line problem>. <One- to three-sentence explanation, including the concrete change you'd suggest.>
+- <file:line> — <one-line problem>. <One- to three-sentence explanation of what is wrong and why, ending with what has to be true for the finding to be resolved.>
 
 ## Should fix
 - ...
@@ -101,8 +101,9 @@ Severities reflect reviewer confidence, not implementer scope. Every finding is 
 Rules for findings:
 
 - One issue per bullet. If the same issue appears in five places, list it once with the locations.
-- Be specific. Point at the line, name the variable, quote the phrase. "Naming is unclear" is useless; "`process()` on line 42 actually validates and saves — split or rename to `validateAndSave()`" is useful.
-- Suggest the fix when it's short. Don't write replacement code longer than the original.
+- Be specific. Point at the line, name the variable, quote the phrase. "Naming is unclear" is useless; "`process()` on line 42 actually validates and saves — the name hides half of what it does" is useful.
+- Report the problem, not the patch. No diffs, no replacement code, no replacement prose — the implementer owns the fix and will read more of the codebase than you did. Renames are the exception: there the new name *is* the finding, so give it. A deletion says exactly what to delete.
+- Say what "resolved" looks like when it isn't obvious from the problem — a test that passes, a build outcome, an observable behavior.
 - Do not downgrade structural placement problems into optional cleanup. Use `Must fix` when the location violates package boundaries, build/distribution rules, import direction, or ownership conventions. Use `Should fix` when the code works but belongs in an existing, more specific folder. Use `Consider` only when the current location is valid and the alternative is a minor organization preference.
 - If the diff is clean, say so in one line and stop. Do not invent problems.
 
