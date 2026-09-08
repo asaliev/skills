@@ -100,7 +100,7 @@ Severities reflect reviewer confidence, not implementer scope. Every finding is 
 
 Rules for findings:
 
-- One issue per bullet. If the same issue appears in five places, list it once with the locations.
+- One issue per bullet. If the same issue appears in five places, list it once with the locations. When the issue is a rule violation rather than a single defect, say that in the bullet. The pattern is wrong wherever it occurs, and you read a diff, not the whole tree — so cite a few locations as examples, mark them as examples, and leave the implementer to sweep rather than to patch your list.
 - Be specific. Point at the line, name the variable, quote the phrase. "Naming is unclear" is useless; "`process()` on line 42 actually validates and saves — the name hides half of what it does" is useful.
 - Report the problem, not the patch. No diffs, no replacement code, no replacement prose — the implementer owns the fix and will read more of the codebase than you did. Renames are the exception: there the new name *is* the finding, so give it. A deletion says exactly what to delete.
 - Say what "resolved" looks like when it isn't obvious from the problem — a test that passes, a build outcome, an observable behavior.
