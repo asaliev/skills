@@ -10,13 +10,17 @@ description: Implement the findings from a code review. Use when given a
 
 # Applying a Code Review
 
-A finding states a problem and what "resolved" looks like, not a patch. You
-own the implementation: make the smallest change that resolves it, and say
-what you did.
+A finding states a problem, not a patch, and says what "resolved" looks like
+when that isn't obvious. You own the implementation: make the smallest change
+that resolves it, and say what you did.
+
+When a finding says it is a rule violation, its locations are examples, not
+the full list. Search the codebase for every occurrence, fix them all, and
+list every location you changed.
 
 For each finding in the review — regardless of severity — produce one of:
 
-1. **Applied.** Made the change. Note the file and line.
+1. **Applied.** Made the change. Note each file and line.
 2. **Declined with reason.** Evaluated and chose not to apply. State the
    specific reason. "Marked Consider" is not a reason. "Refactor not
    requested" is not a reason — the review IS the request. Valid reasons
@@ -51,7 +55,7 @@ alone, not made more exact" is a complete reason for it.
 Group by outcome, not by severity:
 
 ## Applied
-- <file:line> — <what changed>
+- <file:line>[, <file:line>…] — <what changed>
 
 ## Declined
 - <file:line> — <finding> — <reason>

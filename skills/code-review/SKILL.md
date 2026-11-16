@@ -86,7 +86,7 @@ Group findings by severity. Skip empty sections. Always include the footer verba
 
 ```
 ## Must fix
-- <file:line> — <one-line problem>. <One- to three-sentence explanation of what is wrong and why, ending with what has to be true for the finding to be resolved.>
+- <file:line> — <one-line problem>. <Explanation of what is wrong and why, only as long as the implementer needs to act on it.>
 
 ## Should fix
 - ...

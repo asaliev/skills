@@ -1,7 +1,7 @@
 interface:
   display_name: "Code Review"
   short_description: "Code review with prioritized findings"
-  default_prompt: "Use $code-review to review the current changes and report the highest-risk findings first."
+  default_prompt: "Use $code-review to review the current changes and report the findings grouped by severity."
 
 policy:
   allow_implicit_invocation: true
